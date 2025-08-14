@@ -45,4 +45,22 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    
+        // Check if user is admin
+        public function isAdmin()
+        {
+            return $this->role === 'admin';
+        }
+    
+        // Check if user is customer
+        public function isCustomer()
+        {
+            return $this->role === 'customer';
+        }
+    
+        // User has many rentals
+        public function rentals()
+        {
+            return $this->hasMany(Rental::class);
+        }
 }
